@@ -1,32 +1,49 @@
 // Generates Catppuccin themes for the Runestone text editor (iOS/iPadOS).
-// Usage: npm run build
-import { flavors } from "@catppuccin/palette";
+// Usage: pnpm build
+import {
+  flavors,
+  type AccentName,
+  type CatppuccinFlavor,
+  type ColorName,
+} from "@catppuccin/palette";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import type { Color, RunestoneTheme, Scope } from "./types.ts";
 
-const OUT = "themes";
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
+const OUT = join(ROOT, "themes");
 
-// Accents that make sense for UI tinting (every Catppuccin accent colour).
-const ACCENTS = [
+// Every Catppuccin accent colour gets its own variant.
+const ACCENTS: AccentName[] = [
   "rosewater", "flamingo", "pink", "mauve", "red", "maroon", "peach",
   "yellow", "green", "teal", "sky", "sapphire", "blue", "lavender",
 ];
 
-/** Append an alpha channel (0–1) to a #rrggbb hex string. */
-const alpha = (hex, a) =>
-  hex + Math.round(a * 255).toString(16).padStart(2, "0");
+type Hex = `#${string}`;
 
-const scope = (name, color, { italic = false, bold = false } = {}) => ({
+/** Append an alpha channel (0–1) to a #rrggbb hex string. */
+const alpha = (hex: Hex, a: number): Hex =>
+  `${hex}${Math.round(a * 255).toString(16).padStart(2, "0")}`;
+
+const scope = (
+  name: string,
+  color: Color,
+  { italic = false, bold = false }: { italic?: boolean; bold?: boolean } = {},
+): Scope => ({
   name,
   color,
   fontStyle: italic ? "italic" : "regular",
   fontWeight: bold ? "bold" : "regular",
 });
 
-function buildTheme(flavor, accentName) {
+function buildTheme(
+  flavor: CatppuccinFlavor,
+  accentName: AccentName,
+): RunestoneTheme {
   const c = Object.fromEntries(
-    Object.entries(flavor.colors).map(([k, v]) => [k, v.hex]),
-  );
+    Object.entries(flavor.colors).map(([k, v]) => [k, v.hex as Hex]),
+  ) as Record<ColorName, Hex>;
   const accent = c[accentName];
   const dark = flavor.dark;
 
@@ -34,7 +51,7 @@ function buildTheme(flavor, accentName) {
   // capture names. Runestone falls back to the parent name (e.g.
   // "function.method" -> "function"), so more specific entries refine
   // the general ones. Mapping follows the Catppuccin style guide.
-  const scopes = [
+  const scopes: Scope[] = [
     scope("comment", c.overlay2, { italic: true }),
     scope("keyword", c.mauve),
     scope("keyword.operator", c.sky),
@@ -214,4 +231,4 @@ for (const [id, flavor] of Object.entries(flavors)) {
     count++;
   }
 }
-console.log(`Generated ${count} themes in ./${OUT}`);
+console.log(`Generated ${count} themes in ./${relative(ROOT, OUT)}`);

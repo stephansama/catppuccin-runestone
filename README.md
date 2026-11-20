@@ -31,14 +31,19 @@ the [Catppuccin style guide](https://github.com/catppuccin/catppuccin/blob/main/
 
 ## Building
 
-Themes are generated from [`@catppuccin/palette`](https://www.npmjs.com/package/@catppuccin/palette):
+Themes are generated from [`@catppuccin/palette`](https://www.npmjs.com/package/@catppuccin/palette)
+by a TypeScript generator in the [`generator`](./generator) pnpm workspace
+package, run with [`tsx`](https://tsx.is):
 
 ```sh
-npm install
-npm run build
+pnpm install
+pnpm build       # writes ./themes
+pnpm typecheck
 ```
 
-Edit [`build.mjs`](./build.mjs) to change the color mapping, then rebuild.
+Edit [`generator/src/build.ts`](./generator/src/build.ts) to change the color
+mapping, then rebuild. The theme file schema is typed in
+[`generator/src/types.ts`](./generator/src/types.ts).
 
 ### Format notes
 
