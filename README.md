@@ -22,9 +22,10 @@ the [Catppuccin style guide](https://github.com/catppuccin/catppuccin/blob/main/
 
 ## Usage
 
-1. Download a zip from the [latest release](https://github.com/stephansama/catppuccin-runestone/releases/latest)
-   (one per flavor, or all of them), or pick a theme from [`themes/`](./themes), e.g.
-   `themes/mocha/Catppuccin Mocha Mauve.runestonetheme`.
+1. Download a zip from the [latest release](https://github.com/stephansama/catppuccin-runestone/releases/latest):
+   `catppuccin-runestone-<flavor>.zip` for one flavor, or
+   `catppuccin-runestone.zip` for all of them. Unzip it and pick a theme,
+   e.g. `Catppuccin Mocha Mauve.runestonetheme`.
 2. Get the file onto your device (AirDrop, iCloud Drive, or download it in
    Safari and save to Files).
 3. Open the `.runestonetheme` file with Runestone (tap it in Files, or use
@@ -38,7 +39,8 @@ package, run with [`tsx`](https://tsx.is):
 
 ```sh
 pnpm install
-pnpm build       # writes ./themes
+pnpm build       # writes ./themes (git-ignored)
+pnpm package     # builds, then zips ./themes into ./dist
 pnpm typecheck
 ```
 
@@ -48,11 +50,12 @@ mapping, then rebuild. The theme file schema is typed in
 
 ### Releases
 
-Releases are cut by [`auto`](https://intuit.github.io/auto/) on every push
-to `main`. Versions come from [Conventional Commits](https://www.conventionalcommits.org)
+Theme files are not committed; they are build artifacts. On every push to
+`main`, CI generates them and [`auto`](https://intuit.github.io/auto/) cuts a
+release. Versions come from [Conventional Commits](https://www.conventionalcommits.org)
 (`feat:` → minor, `fix:` / anything else → patch, `!` → major) and are
-tracked with git tags. Zips of the themes (`pnpm package`) are attached to
-each GitHub release.
+tracked with git tags. The zips from `pnpm package` are attached to each
+GitHub release.
 
 ### Format notes
 

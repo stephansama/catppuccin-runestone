@@ -2,7 +2,12 @@
 	"plugins": [
 		"git-tag",
 		["conventional-commits", { "defaultReleaseType": "patch" }],
-		["upload-assets", ["dist/*.zip"]]
+		[
+			"upload-assets",
+			{
+				"assets": ["./dist/*.zip"]
+			}
+		]
 	],
 	"owner": "stephansama",
 	"repo": "catppuccin-runestone",

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "pnpm --filter @catppuccin-runestone/generator build",
     "typecheck": "pnpm --filter @catppuccin-runestone/generator typecheck",
-    "package": "rm -rf dist && mkdir -p dist && cd themes && zip -qr ../dist/catppuccin-runestone.zip . && for f in */; do (cd \"$f\" && zip -qr \"../../dist/catppuccin-runestone-${f%/}.zip\" .); done",
+    "package": "pnpm build && rm -rf dist && mkdir -p dist && cd themes && zip -qr ../dist/catppuccin-runestone.zip . && for f in */; do (cd \"$f\" && zip -qr \"../../dist/catppuccin-runestone-${f%/}.zip\" .); done",
     "release": "auto shipit"
   },
   "devDependencies": {
