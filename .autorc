@@ -1,0 +1,16 @@
+{
+	"plugins": [
+		"git-tag",
+		["conventional-commits", { "defaultReleaseType": "patch" }],
+		[
+			"upload-assets",
+			{
+				"assets": ["./dist/*.zip"]
+			}
+		]
+	],
+	"owner": "stephansama",
+	"repo": "catppuccin-runestone",
+	"name": "Stephan Randle",
+	"email": "stephanrandle@hotmail.com"
+}

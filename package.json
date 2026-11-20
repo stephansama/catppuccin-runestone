@@ -1,0 +1,19 @@
+{
+  "name": "catppuccin-runestone",
+  "private": true,
+  "description": "Soothing pastel themes for the Runestone text editor",
+  "license": "MIT",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "build": "pnpm --filter @catppuccin-runestone/generator build",
+    "typecheck": "pnpm --filter @catppuccin-runestone/generator typecheck",
+    "package": "pnpm build && rm -rf dist && mkdir -p dist && cd themes && zip -qr ../dist/catppuccin-runestone.zip . && for f in */; do (cd \"$f\" && zip -qr \"../../dist/catppuccin-runestone-${f%/}.zip\" .); done",
+    "release": "auto shipit"
+  },
+  "devDependencies": {
+    "@auto-it/conventional-commits": "^11.3.6",
+    "@auto-it/git-tag": "^11.3.6",
+    "@auto-it/upload-assets": "^11.3.6",
+    "auto": "^11.3.6"
+  }
+}

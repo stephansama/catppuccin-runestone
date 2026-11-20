@@ -1,0 +1,4 @@
+packages:
+  - generator
+onlyBuiltDependencies:
+  - esbuild
