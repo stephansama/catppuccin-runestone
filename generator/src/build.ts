@@ -173,7 +173,7 @@ function buildTheme(
         background: c.mantle,
         stroke: c.crust,
         grabber: c.overlay0,
-        shadow: dark ? "#00000080" : "#00000026",
+        shadow: dark ? alpha(c.crust, 0.5) : alpha(c.text, 0.15),
         wellBackground: c.crust,
         wellHairline: c.surface0,
       },

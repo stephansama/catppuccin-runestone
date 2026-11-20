@@ -42,7 +42,7 @@
       "background": "#181825",
       "stroke": "#11111b",
       "grabber": "#6c7086",
-      "shadow": "#00000080",
+      "shadow": "#11111b80",
       "wellBackground": "#11111b",
       "wellHairline": "#313244"
     },
