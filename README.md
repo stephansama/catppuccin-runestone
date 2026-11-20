@@ -22,7 +22,8 @@ the [Catppuccin style guide](https://github.com/catppuccin/catppuccin/blob/main/
 
 ## Usage
 
-1. Pick a theme from [`themes/`](./themes), e.g.
+1. Download a zip from the [latest release](https://github.com/stephansama/catppuccin-runestone/releases/latest)
+   (one per flavor, or all of them), or pick a theme from [`themes/`](./themes), e.g.
    `themes/mocha/Catppuccin Mocha Mauve.runestonetheme`.
 2. Get the file onto your device (AirDrop, iCloud Drive, or download it in
    Safari and save to Files).
@@ -44,6 +45,14 @@ pnpm typecheck
 Edit [`generator/src/build.ts`](./generator/src/build.ts) to change the color
 mapping, then rebuild. The theme file schema is typed in
 [`generator/src/types.ts`](./generator/src/types.ts).
+
+### Releases
+
+Releases are cut by [`auto`](https://intuit.github.io/auto/) on every push
+to `main`. Versions come from [Conventional Commits](https://www.conventionalcommits.org)
+(`feat:` → minor, `fix:` / anything else → patch, `!` → major) and are
+tracked with git tags. Zips of the themes (`pnpm package`) are attached to
+each GitHub release.
 
 ### Format notes
 

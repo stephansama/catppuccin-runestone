@@ -1,0 +1,41 @@
+name: release
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+env:
+  DO_NOT_TRACK: 1
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+concurrency: ${{github.workflow}}-${{github.ref}}
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+          node-version-file: ".nvmrc"
+      - name: 📦 Installing dependencies
+        run: pnpm install --frozen-lockfile
+      - name: 🔍 Typecheck
+        run: pnpm typecheck
+      - name: 🎨 Building themes
+        run: pnpm build
+      - name: ✅ Checking themes are up to date
+        run: git diff --exit-code -- themes
+      - name: 🗜️ Packaging themes
+        run: pnpm package
+      - name: ↗️ Create release
+        run: pnpm run release
