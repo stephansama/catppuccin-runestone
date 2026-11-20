@@ -1,3 +1,15 @@
+# v0.0.1 (Fri Nov 20 2026)
+
+#### 🐛 Bug Fix
+
+- docs: add Latte and Mocha screenshots [#2](https://github.com/stephansama/catppuccin-runestone/pull/2) ([@stephansama](https://github.com/stephansama))
+
+#### Authors: 1
+
+- Stephan Randle ([@stephansama](https://github.com/stephansama))
+
+---
+
 # v0.0.0 (Fri Nov 20 2026)
 
 #### 🚀 Enhancement
