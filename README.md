@@ -13,12 +13,14 @@ Every flavor ships with all 14 Catppuccin accents. The accent tints the
 interface (header buttons, search toolbar, selection); syntax colors follow
 the [Catppuccin style guide](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md).
 
-| Flavor | Appearance |
-| --- | --- |
-| 🌻 Latte | light |
-| 🪴 Frappé | dark |
-| 🌺 Macchiato | dark |
-| 🌿 Mocha | dark |
+<details>
+<summary>🌻 Latte</summary>
+<img src="assets/latte.png" alt="Runestone with Catppuccin Latte"/>
+</details>
+<details>
+<summary>🌿 Mocha</summary>
+<img src="assets/mocha.png" alt="Runestone with Catppuccin Mocha"/>
+</details>
 
 ## Usage
 
