@@ -1,0 +1,68 @@
+<h3 align="center">
+	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
+	Catppuccin for <a href="https://runestone.app">Runestone</a>
+</h3>
+
+<p align="center">
+	Soothing pastel themes for the Runestone text editor on iPhone and iPad.
+</p>
+
+## Previews
+
+Every flavor ships with all 14 Catppuccin accents. The accent tints the
+interface (header buttons, search toolbar, selection); syntax colors follow
+the [Catppuccin style guide](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md).
+
+| Flavor | Appearance |
+| --- | --- |
+| 🌻 Latte | light |
+| 🪴 Frappé | dark |
+| 🌺 Macchiato | dark |
+| 🌿 Mocha | dark |
+
+## Usage
+
+1. Pick a theme from [`themes/`](./themes), e.g.
+   `themes/mocha/Catppuccin Mocha Mauve.runestonetheme`.
+2. Get the file onto your device (AirDrop, iCloud Drive, or download it in
+   Safari and save to Files).
+3. Open the `.runestonetheme` file with Runestone (tap it in Files, or use
+   the share sheet → Runestone), then select it in Runestone's theme settings.
+
+## Building
+
+Themes are generated from [`@catppuccin/palette`](https://www.npmjs.com/package/@catppuccin/palette):
+
+```sh
+npm install
+npm run build
+```
+
+Edit [`build.mjs`](./build.mjs) to change the color mapping, then rebuild.
+
+### Format notes
+
+Runestone themes are JSON with three sections:
+
+- `editor` — background, text, caret, gutter, page guide, selection and
+  diff backgrounds. Colors are `#rrggbb` or `#rrggbbaa`.
+- `interface` — header, drawer, search UI and cursor-position colors. Any
+  value may also be `"system"`/`"default"` to use the iOS default.
+- `scopes` — syntax highlighting rules. Runestone uses Tree-sitter, so
+  `name` is a Tree-sitter capture name (`keyword`, `function.method`,
+  `string.special`, …). Each rule has `color`, `fontStyle`
+  (`regular`/`italic`) and `fontWeight` (`regular`/`bold`).
+
+## 💝 Thanks to
+
+- [Stephan Randle](https://github.com/stephansama)
+
+&nbsp;
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg" />
+</p>
+
+<p align="center">
+	Copyright &copy; 2021-present <a href="https://github.com/catppuccin" target="_blank">Catppuccin Org</a>
+</p>

@@ -1,0 +1,14 @@
+{
+  "name": "catppuccin-runestone",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Soothing pastel themes for the Runestone text editor",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@catppuccin/palette": "^1.8.0"
+  }
+}
